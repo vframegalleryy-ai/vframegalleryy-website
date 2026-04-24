@@ -6,33 +6,10 @@
 <title>VFrameGalleryy</title>
 
 <style>
-body {
-    margin:0;
-    font-family: Arial;
-    background:#f5f5f5;
-}
-
-/* Header */
-header {
-    background:#111;
-    color:white;
-    text-align:center;
-    padding:15px;
-}
-
-/* Hero */
-.hero {
-    background:linear-gradient(to right,#000,#333);
-    color:white;
-    text-align:center;
-    padding:40px 20px;
-}
-
-/* Products */
-.container {
-    padding:20px;
-}
-
+body {margin:0;font-family:Arial;background:#f5f5f5;}
+header {background:#111;color:white;text-align:center;padding:15px;}
+.hero {background:#222;color:white;text-align:center;padding:30px;}
+.container {padding:20px;}
 .card {
     background:white;
     margin:15px;
@@ -41,32 +18,23 @@ header {
     box-shadow:0 4px 10px rgba(0,0,0,0.1);
     text-align:center;
 }
-
-/* Price */
-.price {
-    color:green;
-    font-size:20px;
-    font-weight:bold;
-}
-
-/* Button */
+.price {color:green;font-weight:bold;font-size:18px;}
 .btn {
     display:inline-block;
     margin-top:10px;
-    padding:12px 20px;
+    padding:10px 20px;
     background:#25D366;
     color:white;
-    border-radius:6px;
+    border-radius:5px;
     text-decoration:none;
 }
 
-/* Offer */
-.offer {
-    background:#ff3d00;
-    color:white;
-    text-align:center;
-    padding:10px;
-    font-weight:bold;
+/* Image styling */
+.frame-img {
+    width:100%;
+    max-width:250px;
+    border-radius:10px;
+    margin-bottom:10px;
 }
 
 /* Floating WhatsApp */
@@ -82,13 +50,7 @@ header {
     font-size:20px;
 }
 
-/* Footer */
-footer {
-    background:#000;
-    color:white;
-    text-align:center;
-    padding:15px;
-}
+footer {background:#000;color:white;text-align:center;padding:15px;}
 </style>
 </head>
 
@@ -99,30 +61,28 @@ footer {
 <p>Best Quality Frames at Best Price</p>
 </header>
 
-<div class="offer">
-🔥 Special Offer – Best Prices in Srikakulam 🔥
-</div>
-
 <div class="hero">
 <h2>Make Your Memories Beautiful ❤️</h2>
-<p>High-quality frames with glass</p>
 </div>
 
 <div class="container">
 
 <div class="card">
+<img class="frame-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="6x4 frame">
 <h3>6×4 Frame</h3>
 <p class="price">₹100/-</p>
 <a class="btn" href="https://wa.me/919494899320?text=I want 6x4 frame">Order Now</a>
 </div>
 
 <div class="card">
+<img class="frame-img" src="https://images.unsplash.com/photo-1582582494700-9e7d5a61fbb0" alt="8x12 frame">
 <h3>8×12 Frame</h3>
 <p class="price">₹250/-</p>
 <a class="btn" href="https://wa.me/919494899320?text=I want 8x12 frame">Order Now</a>
 </div>
 
 <div class="card">
+<img class="frame-img" src="https://images.unsplash.com/photo-1598300053653-4d64d3b4b8e3" alt="12x18 frame">
 <h3>12×18 Frame</h3>
 <p class="price">₹350/-</p>
 <a class="btn" href="https://wa.me/919494899320?text=I want 12x18 frame">Order Now</a>
@@ -135,8 +95,7 @@ footer {
 <p>📍 Visakhapatnam, Andhra Pradesh</p>
 </footer>
 
-<!-- Floating WhatsApp Button -->
-<a class="float" href="https://wa.me/919494899320?text=Hi VFrameGalleryy, I want to order">💬</a>
+<a class="float" href="https://wa.me/919494899320">💬</a>
 
 </body>
 </html>
