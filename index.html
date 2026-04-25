@@ -13,7 +13,6 @@ body {
   color:white;
 }
 
-/* HEADER */
 header {
   text-align:center;
   padding:20px;
@@ -22,19 +21,11 @@ header {
   font-weight:bold;
 }
 
-/* HERO */
 .hero {
   text-align:center;
   padding:30px;
 }
-.hero h1 {
-  font-size:28px;
-}
-.hero p {
-  color:#ccc;
-}
 
-/* FRAMES */
 .frames {
   display:flex;
   gap:20px;
@@ -42,70 +33,57 @@ header {
   flex-wrap:wrap;
   padding:20px;
 }
+
 .card {
   background:#1a1a1a;
   padding:15px;
   border-radius:15px;
   width:200px;
   text-align:center;
-  transition:0.3s;
 }
-.card:hover {
-  transform:scale(1.05);
-}
+
 .price {
   color:#00ffcc;
-  font-size:18px;
 }
 
-/* UPLOAD */
-.upload {
-  text-align:center;
+/* FORM */
+.form-box {
+  max-width:400px;
+  margin:auto;
   padding:20px;
 }
-input {
-  padding:10px;
-  margin:10px;
+
+input, select, textarea {
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border:none;
+  border-radius:10px;
 }
 
-/* PREVIEW */
-.preview img {
-  max-width:200px;
-  border:5px solid white;
-}
-
-/* BUTTONS */
+/* BUTTON */
 .btn {
-  display:inline-block;
-  margin:10px;
-  padding:12px 20px;
+  display:block;
+  text-align:center;
+  padding:15px;
   border-radius:10px;
   text-decoration:none;
   font-weight:bold;
-}
-.whatsapp {
   background:#25D366;
   color:black;
+  margin-top:10px;
 }
+
 .instagram {
   background:#E1306C;
   color:white;
 }
 
-/* REVIEWS */
-.reviews {
-  padding:20px;
-  text-align:center;
-}
-
-/* TIMER */
 .timer {
   text-align:center;
   color:#ff4444;
-  font-size:20px;
 }
 
-/* FOOTER */
 footer {
   text-align:center;
   padding:20px;
@@ -127,47 +105,42 @@ footer {
   Offer Ends In: <span id="countdown"></span>
 </div>
 
-<!-- FRAME SIZES -->
+<!-- FRAMES -->
 <div class="frames">
-
   <div class="card">
-    <h3>6 x 4 Frame</h3>
+    <h3>6 x 4</h3>
     <p class="price">₹99</p>
   </div>
-
   <div class="card">
-    <h3>8 x 12 Frame</h3>
+    <h3>8 x 12</h3>
     <p class="price">₹249</p>
   </div>
-
   <div class="card">
-    <h3>12 x 18 Frame</h3>
+    <h3>12 x 18</h3>
     <p class="price">₹349</p>
   </div>
-
 </div>
 
-<!-- UPLOAD -->
-<div class="upload">
-  <h2>Upload Your Photo</h2>
-  <input type="file" id="upload" accept="image/*">
-  <div class="preview">
-    <img id="previewImg" src="">
-  </div>
-</div>
+<!-- ORDER FORM -->
+<div class="form-box">
+  <h2>Enter Your Details</h2>
 
-<!-- WHATSAPP ORDER -->
-<div style="text-align:center;">
-  <a class="btn whatsapp" href="https://wa.me/919494899320?text=Hi%20I%20want%20to%20order%20a%20frame">Order on WhatsApp</a>
+  <input type="text" id="name" placeholder="Full Name">
+  <input type="tel" id="phone" placeholder="Mobile Number">
+
+  <select id="size">
+    <option>Select Frame Size</option>
+    <option>6 x 4 - ₹99</option>
+    <option>8 x 12 - ₹249</option>
+    <option>12 x 18 - ₹349</option>
+  </select>
+
+  <textarea id="address" placeholder="Delivery Address"></textarea>
+  <textarea id="note" placeholder="Any special request"></textarea>
+
+  <a class="btn" onclick="sendWhatsApp()">Order on WhatsApp</a>
 
   <a class="btn instagram" href="https://instagram.com/vframegalleryy">Follow Instagram</a>
-</div>
-
-<!-- REVIEWS -->
-<div class="reviews">
-  <h2>⭐ Customer Reviews</h2>
-  <p>“Amazing quality frames!”</p>
-  <p>“Fast delivery and best price!”</p>
 </div>
 
 <footer>
@@ -175,17 +148,25 @@ footer {
 </footer>
 
 <script>
-// IMAGE PREVIEW
-document.getElementById("upload").addEventListener("change", function(e){
-  const file = e.target.files[0];
-  const reader = new FileReader();
-  reader.onload = function(){
-    document.getElementById("previewImg").src = reader.result;
-  }
-  reader.readAsDataURL(file);
-});
+// WHATSAPP AUTO MESSAGE
+function sendWhatsApp(){
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let size = document.getElementById("size").value;
+  let address = document.getElementById("address").value;
+  let note = document.getElementById("note").value;
 
-// COUNTDOWN TIMER
+  let message = `*New Order - VFrameGalleryy*%0A
+Name: ${name}%0A
+Phone: ${phone}%0A
+Frame Size: ${size}%0A
+Address: ${address}%0A
+Note: ${note}`;
+
+  window.open(`https://wa.me/919494899320?text=${message}`, '_blank');
+}
+
+// TIMER
 let endDate = new Date();
 endDate.setHours(endDate.getHours()+5);
 
