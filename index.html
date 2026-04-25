@@ -5,20 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VFrameGalleryy</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
-}
-
-body{
-  background:#0f0f0f;
-  color:#fff;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#0f0f0f;color:#fff;}
 
 /* HERO */
 .hero{
@@ -28,69 +19,51 @@ body{
   justify-content:center;
   align-items:center;
   text-align:center;
-  background:linear-gradient(135deg,#000,#1a1a1a);
 }
-
 .hero h1{
   font-size:40px;
-  margin-bottom:10px;
+  background:linear-gradient(90deg,#ffcc00,#ff6600);
+  -webkit-background-clip:text;
+  color:transparent;
 }
 
-.hero p{
-  opacity:0.7;
-}
-
+/* BUTTON */
 .btn{
-  margin-top:20px;
+  margin-top:15px;
   padding:12px 25px;
-  background:#ffcc00;
-  color:#000;
   border:none;
   border-radius:30px;
+  background:linear-gradient(90deg,#ffcc00,#ff6600);
+  color:#000;
   cursor:pointer;
   font-weight:bold;
-  transition:0.3s;
-}
-
-.btn:hover{
-  transform:scale(1.1);
 }
 
 /* SECTION */
-.section{
-  padding:60px 20px;
-  text-align:center;
-}
+.section{padding:50px 20px;text-align:center;}
 
-/* CARDS */
-.cards{
-  display:flex;
-  gap:20px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
+/* CARD */
+.cards{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;}
 .card{
   background:#1c1c1c;
   padding:20px;
   border-radius:15px;
   width:250px;
-  transition:0.3s;
 }
 
-.card:hover{
-  transform:translateY(-10px);
+/* FORM */
+.form{
+  max-width:400px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
 }
 
-.card img{
-  width:100%;
-  border-radius:10px;
-}
-
-.price{
-  color:#ffcc00;
-  font-size:22px;
-  margin:10px 0;
+input,select{
+  padding:10px;
+  border-radius:8px;
+  border:none;
 }
 
 /* GALLERY */
@@ -103,41 +76,28 @@ body{
 .gallery img{
   width:100%;
   border-radius:10px;
-  transition:0.3s;
 }
 
-.gallery img:hover{
-  transform:scale(1.1);
-}
-
-/* TRUST */
-.trust{
+/* REELS */
+.reels{
   display:flex;
-  justify-content:center;
-  gap:30px;
-  flex-wrap:wrap;
+  overflow-x:auto;
+  gap:10px;
 }
 
-.trust div{
-  background:#1c1c1c;
-  padding:15px;
-  border-radius:10px;
-}
-
-/* WHATSAPP BUTTON */
+/* WHATSAPP */
 .whatsapp{
   position:fixed;
-  bottom:20px;
+  bottom:80px;
   right:20px;
   background:#25D366;
-  color:#fff;
   padding:15px;
   border-radius:50%;
-  font-size:20px;
+  color:#fff;
   text-decoration:none;
 }
 
-/* STICKY CTA */
+/* STICKY */
 .sticky{
   position:fixed;
   bottom:0;
@@ -146,7 +106,6 @@ body{
   color:#000;
   text-align:center;
   padding:10px;
-  font-weight:bold;
 }
 
 </style>
@@ -156,38 +115,53 @@ body{
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Turn Your Memories Into Frames ❤️</h1>
-  <p>Premium Photo Frames at Best Price</p>
-  <button class="btn" onclick="scrollToSection()">View Frames</button>
+  <h1>Frame Your Memories ❤️</h1>
+  <p>Premium Frames | Fast Delivery</p>
+  <button class="btn" onclick="scrollToOrder()">Order Now</button>
 </section>
 
-<!-- PRICING -->
-<section class="section" id="frames">
+<!-- FRAMES -->
+<section class="section">
   <h2>Our Frames</h2>
-
   <div class="cards">
+    <div class="card">6x4 Frame - ₹99</div>
+    <div class="card">8x12 Frame - ₹249</div>
+    <div class="card">12x18 Frame - ₹349</div>
+  </div>
+</section>
 
-    <div class="card">
-      <img src="https://via.placeholder.com/300x200">
-      <h3>6x4 Frame</h3>
-      <p class="price">₹99</p>
-      <button class="btn" onclick="order()">Order Now</button>
-    </div>
+<!-- ORDER FORM -->
+<section class="section" id="order">
+  <h2>Place Your Order</h2>
 
-    <div class="card">
-      <img src="https://via.placeholder.com/300x200">
-      <h3>8x12 Frame</h3>
-      <p class="price">₹249</p>
-      <button class="btn" onclick="order()">Order Now</button>
-    </div>
+  <div class="form">
+    <input type="text" id="name" placeholder="Your Name">
+    <input type="tel" id="phone" placeholder="Phone Number">
+    <input type="text" id="address" placeholder="Delivery Address">
 
-    <div class="card">
-      <img src="https://via.placeholder.com/300x200">
-      <h3>12x18 Frame</h3>
-      <p class="price">₹349</p>
-      <button class="btn" onclick="order()">Order Now</button>
-    </div>
+    <select id="size" onchange="updatePrice()">
+      <option value="">Select Frame Size</option>
+      <option value="6x4">6x4 - ₹99</option>
+      <option value="8x12">8x12 - ₹249</option>
+      <option value="12x18">12x18 - ₹349</option>
+    </select>
 
+    <input type="text" id="coupon" placeholder="Coupon Code">
+
+    <h3 id="price">Price: ₹0</h3>
+
+    <button class="btn" onclick="applyCoupon()">Apply Coupon</button>
+    <button class="btn" onclick="payUPI()">Pay via UPI</button>
+    <button class="btn" onclick="sendWhatsApp()">Confirm Order</button>
+  </div>
+</section>
+
+<!-- REELS -->
+<section class="section">
+  <h2>Instagram Reels 🔥</h2>
+  <div class="reels">
+    <iframe src="" width="150" height="250"></iframe>
+    <iframe src="" width="150" height="250"></iframe>
   </div>
 </section>
 
@@ -197,18 +171,16 @@ body{
   <div class="gallery">
     <img src="https://via.placeholder.com/300">
     <img src="https://via.placeholder.com/300">
-    <img src="https://via.placeholder.com/300">
-    <img src="https://via.placeholder.com/300">
   </div>
 </section>
 
 <!-- TRUST -->
 <section class="section">
   <h2>Why Choose Us</h2>
-  <div class="trust">
-    <div>🚚 All Over Andhra Pradesh Delivery</div>
-    <div>⭐ 100+ Happy Customers</div>
-    <div>📦 Safe Packaging</div>
+  <div class="cards">
+    <div class="card">🚚 All Over Andhra Pradesh Delivery</div>
+    <div class="card">⭐ 100+ Happy Customers</div>
+    <div class="card">📦 Safe Packaging</div>
   </div>
 </section>
 
@@ -216,18 +188,52 @@ body{
 <a class="whatsapp" href="https://wa.me/9494899320">💬</a>
 
 <!-- STICKY -->
-<div class="sticky">
-  Order Now on WhatsApp 🔥
-</div>
+<div class="sticky">Order Now 🔥</div>
 
 <script>
-function scrollToSection(){
-  document.getElementById("frames").scrollIntoView({behavior:"smooth"});
+
+let basePrice = 0;
+
+function scrollToOrder(){
+  document.getElementById("order").scrollIntoView({behavior:"smooth"});
 }
 
-function order(){
-  window.open("https://wa.me/91XXXXXXXXXX?text=I want to order a frame");
+function updatePrice(){
+  let size = document.getElementById("size").value;
+
+  if(size==="6x4") basePrice = 99;
+  if(size==="8x12") basePrice = 249;
+  if(size==="12x18") basePrice = 349;
+
+  document.getElementById("price").innerText = "Price: ₹" + basePrice;
 }
+
+function applyCoupon(){
+  let code = document.getElementById("coupon").value;
+
+  if(code === "VFRAME10"){
+    basePrice = basePrice - 10;
+    alert("Coupon Applied!");
+  }
+
+  document.getElementById("price").innerText = "Price: ₹" + basePrice;
+}
+
+function payUPI(){
+  window.location.href = "upi://pay?pa=9494899320@ybl&pn=VFrameGalleryy&am="+basePrice;
+}
+
+function sendWhatsApp(){
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let address = document.getElementById("address").value;
+  let size = document.getElementById("size").value;
+
+  let message = `Order Details:%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0ASize: ${size}%0APrice: ₹${basePrice}`;
+
+  window.open(`https://wa.me/91XXXXXXXXXX?text=${message}`);
+}
+
 </script>
 
 </body>
