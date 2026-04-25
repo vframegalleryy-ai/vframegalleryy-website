@@ -6,111 +6,164 @@
 <title>VFrameGalleryy</title>
 
 <style>
-body {margin:0;font-family:Arial;background:#f5f5f5;}
-header {background:#111;color:white;text-align:center;padding:15px;}
-.hero {background:#222;color:white;text-align:center;padding:30px;}
-.container {padding:20px;}
-
-.card {
-    background:white;
-    margin:15px;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    text-align:center;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f8f8f8;
 }
 
-.price {color:green;font-weight:bold;font-size:18px;}
+/* Header */
+header {
+  background: #000;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+}
 
+/* Hero */
+.hero {
+  padding: 40px;
+  text-align: center;
+  background: #fff;
+}
+
+.hero h1 {
+  font-size: 28px;
+}
+
+.hero p {
+  color: #555;
+}
+
+/* Section */
+.section {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Buttons */
 .btn {
-    display:inline-block;
-    margin-top:10px;
-    padding:10px 20px;
-    background:#25D366;
-    color:white;
-    border-radius:5px;
-    text-decoration:none;
+  display: inline-block;
+  padding: 12px 20px;
+  margin: 10px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
 }
 
-.frame-img {
-    width:100%;
-    max-width:250px;
-    border-radius:10px;
-    margin-bottom:10px;
+/* WhatsApp floating */
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 20px;
+  text-decoration: none;
 }
 
-/* Delivery Banner */
-.delivery {
-    background:#ff9800;
-    color:white;
-    text-align:center;
-    padding:10px;
-    font-weight:bold;
+/* Instagram button */
+.instagram {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background: #E1306C;
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 20px;
+  text-decoration: none;
 }
 
-/* Floating WhatsApp */
-.float {
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#25D366;
-    color:white;
-    padding:15px;
-    border-radius:50%;
-    text-decoration:none;
-    font-size:20px;
+/* Sticky Order Button */
+.order-btn {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #ff0000;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  font-size: 18px;
+  text-decoration: none;
 }
 
-footer {background:#000;color:white;text-align:center;padding:15px;}
+/* Popup */
+.popup {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  text-align: center;
+  display: none;
+}
+
+.popup button {
+  margin-top: 10px;
+  padding: 8px 15px;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>VFrameGalleryy</h1>
-<p>Best Quality Frames at Best Price</p>
+  <h2>VFrameGalleryy</h2>
 </header>
 
-<div class="delivery">
-🚚 Delivery Available All Over Andhra Pradesh
-</div>
-
 <div class="hero">
-<h2>Make Your Memories Beautiful ❤️</h2>
+  <h1>Your Memories, Beautifully Framed ❤️</h1>
+  <p>Premium photo frames at best price. Delivery across Andhra Pradesh 🚚</p>
+  <a href="https://wa.me/919494899320" class="btn">Order on WhatsApp</a>
 </div>
 
-<div class="container">
-
-<div class="card">
-<img class="frame-img" src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7">
-<h3>6×4 Frame</h3>
-<p class="price">₹100/-</p>
-<a class="btn" href="https://wa.me/919494899320?text=I want 6x4 frame">Order Now</a>
+<div class="section">
+  <h2>Our Frame Prices</h2>
+  <p>6x4 - ₹100/-</p>
+  <p>8x12 - ₹250/-</p>
+  <p>12x18 - ₹350/-</p>
 </div>
 
-<div class="card">
-<img class="frame-img" src="https://images.unsplash.com/photo-1598300053653-4d64d3b4b8e3">
-<h3>8×12 Frame</h3>
-<p class="price">₹250/-</p>
-<a class="btn" href="https://wa.me/919494899320?text=I want 8x12 frame">Order Now</a>
+<div class="section">
+  <h2>Why Choose Us?</h2>
+  <p>✔ Best Quality Frames</p>
+  <p>✔ Affordable Prices</p>
+  <p>✔ Fast Delivery</p>
 </div>
 
-<div class="card">
-<img class="frame-img" src="https://images.unsplash.com/photo-1578926375605-eaf7559b1458">
-<h3>12×18 Frame</h3>
-<p class="price">₹350/-</p>
-<a class="btn" href="https://wa.me/919494899320?text=I want 12x18 frame">Order Now</a>
+<!-- WhatsApp -->
+<a href="https://wa.me/919494899320" class="whatsapp">💬</a>
+
+<!-- Instagram -->
+<a href="https://instagram.com/vframegalleryy" class="instagram">📸</a>
+
+<!-- Sticky Order -->
+<a href="https://wa.me/919494899320" class="order-btn">Order Now</a>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+  <h3>👋 Welcome to VFrameGalleryy</h3>
+  <p>Click below to order instantly on WhatsApp</p>
+  <a href="https://wa.me/919494899320" class="btn">Chat Now</a>
+  <br>
+  <button onclick="closePopup()">Close</button>
 </div>
 
-</div>
+<script>
+window.onload = function() {
+  document.getElementById("popup").style.display = "block";
+}
 
-<footer>
-<p>📞 Contact: 9494899320</p>
-<p>📍 Visakhapatnam, Andhra Pradesh</p>
-</footer>
-
-<a class="float" href="https://wa.me/919494899320">💬</a>
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+</script>
 
 </body>
 </html>
