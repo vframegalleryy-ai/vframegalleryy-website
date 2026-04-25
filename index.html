@@ -78,11 +78,13 @@ input,select{
   border-radius:10px;
 }
 
-/* REELS */
-.reels{
-  display:flex;
-  overflow-x:auto;
-  gap:10px;
+/* INSTAGRAM CARD */
+.insta-card{
+  background:#1c1c1c;
+  padding:20px;
+  border-radius:15px;
+  max-width:300px;
+  margin:auto;
 }
 
 /* WHATSAPP */
@@ -107,7 +109,6 @@ input,select{
   text-align:center;
   padding:10px;
 }
-
 </style>
 </head>
 
@@ -146,23 +147,37 @@ input,select{
       <option value="12x18">12x18 - ₹349</option>
     </select>
 
-    <input type="text" id="coupon" placeholder="Coupon Code">
-
     <h3 id="price">Price: ₹0</h3>
 
-    <button class="btn" onclick="applyCoupon()">Apply Coupon</button>
     <button class="btn" onclick="payUPI()">Pay via UPI</button>
     <button class="btn" onclick="sendWhatsApp()">Confirm Order</button>
   </div>
 </section>
 
-<!-- REELS -->
+<!-- INSTAGRAM PROFILE -->
 <section class="section">
-  <h2>Instagram Reels 🔥</h2>
-  <div class="reels">
-    <iframe src="" width="150" height="250"></iframe>
-    <iframe src="" width="150" height="250"></iframe>
+  <h2>Follow Us on Instagram 📸</h2>
+
+  <div class="insta-card">
+    <h3>@vframegalleryy</h3>
+    <p>Custom Photo Frames ❤️</p>
+
+    <a href="https://instagram.com/vframegalleryy" target="_blank">
+      <button class="btn">Follow Now</button>
+    </a>
   </div>
+</section>
+
+<!-- INSTAGRAM REELS -->
+<section class="section">
+  <h2>Our Reels 🔥</h2>
+
+  <blockquote class="instagram-media"
+    data-instgrm-permalink="https://www.instagram.com/reel/https://www.instagram.com/reel/DXRHbQdEmdA/?igsh=eG1jbjdoeWI4ZjQy/"
+    style="width:100%; max-width:400px; margin:auto;">
+  </blockquote>
+
+  <script async src="//www.instagram.com/embed.js"></script>
 </section>
 
 <!-- GALLERY -->
@@ -185,7 +200,7 @@ input,select{
 </section>
 
 <!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/9494899320">💬</a>
+<a class="whatsapp" href="https://wa.me/91XXXXXXXXXX">💬</a>
 
 <!-- STICKY -->
 <div class="sticky">Order Now 🔥</div>
@@ -208,30 +223,37 @@ function updatePrice(){
   document.getElementById("price").innerText = "Price: ₹" + basePrice;
 }
 
-function applyCoupon(){
-  let code = document.getElementById("coupon").value;
-
-  if(code === "VFRAME10"){
-    basePrice = basePrice - 10;
-    alert("Coupon Applied!");
-  }
-
-  document.getElementById("price").innerText = "Price: ₹" + basePrice;
-}
-
 function payUPI(){
+  if(basePrice === 0){
+    alert("Please select frame size first!");
+    return;
+  }
   window.location.href = "upi://pay?pa=9494899320@ybl&pn=VFrameGalleryy&am="+basePrice;
 }
 
 function sendWhatsApp(){
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let address = document.getElementById("address").value;
+  let name = document.getElementById("name").value.trim();
+  let phone = document.getElementById("phone").value.trim();
+  let address = document.getElementById("address").value.trim();
   let size = document.getElementById("size").value;
 
-  let message = `Order Details:%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0ASize: ${size}%0APrice: ₹${basePrice}`;
+  if(!name || !phone || !address || !size){
+    alert("Please fill all details!");
+    return;
+  }
 
-  window.open(`https://wa.me/91XXXXXXXXXX?text=${message}`);
+  let message = `Order Details:
+Name: ${name}
+Phone: ${phone}
+Address: ${address}
+Frame Size: ${size}
+Price: ₹${basePrice}`;
+
+  let url = "https://wa.me/9494899320?text=" + encodeURIComponent(message);
+
+  window.open(url, "_blank");
+
+  alert("Order sent successfully! We will contact you soon.");
 }
 
 </script>
