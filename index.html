@@ -7,202 +7,199 @@
 
 <style>
 body {
-    margin:0;
-    font-family:Poppins;
-    background:#0f0f0f;
-    color:#fff;
+  margin:0;
+  font-family: 'Poppins', sans-serif;
+  background:#0f0f0f;
+  color:white;
 }
 
 /* HEADER */
 header {
-    background:linear-gradient(90deg,#ff512f,#dd2476);
-    padding:15px;
-    text-align:center;
-    font-size:22px;
-    font-weight:bold;
+  text-align:center;
+  padding:20px;
+  background:black;
+  font-size:24px;
+  font-weight:bold;
 }
 
 /* HERO */
 .hero {
-    text-align:center;
-    padding:30px;
+  text-align:center;
+  padding:30px;
+}
+.hero h1 {
+  font-size:28px;
+}
+.hero p {
+  color:#ccc;
 }
 
-.badge {
-    background:#25D366;
-    padding:8px 15px;
-    border-radius:20px;
-    display:inline-block;
-    margin-top:10px;
+/* FRAMES */
+.frames {
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+  padding:20px;
 }
-
-.urgent {
-    color:#ffcc00;
-    margin-top:10px;
-}
-
-/* PRICE */
-.prices {
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-}
-
 .card {
-    background:#1c1c1c;
-    margin:10px;
-    padding:20px;
-    border-radius:15px;
-    width:250px;
-    text-align:center;
-    transition:0.3s;
+  background:#1a1a1a;
+  padding:15px;
+  border-radius:15px;
+  width:200px;
+  text-align:center;
+  transition:0.3s;
 }
-
 .card:hover {
-    transform:scale(1.05);
+  transform:scale(1.05);
+}
+.price {
+  color:#00ffcc;
+  font-size:18px;
 }
 
-/* FEATURES */
-.features {
-    padding:20px;
-    text-align:center;
+/* UPLOAD */
+.upload {
+  text-align:center;
+  padding:20px;
+}
+input {
+  padding:10px;
+  margin:10px;
 }
 
-.features p {
-    margin:8px 0;
+/* PREVIEW */
+.preview img {
+  max-width:200px;
+  border:5px solid white;
 }
 
-/* ORDER */
-.order {
-    padding:20px;
-    background:#1a1a1a;
+/* BUTTONS */
+.btn {
+  display:inline-block;
+  margin:10px;
+  padding:12px 20px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:bold;
 }
-
-input, select, textarea {
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    border:none;
-    border-radius:8px;
-}
-
-button {
-    width:100%;
-    padding:15px;
-    border:none;
-    border-radius:10px;
-    font-size:18px;
-    cursor:pointer;
-}
-
 .whatsapp {
-    background:#25D366;
-    color:#fff;
+  background:#25D366;
+  color:black;
+}
+.instagram {
+  background:#E1306C;
+  color:white;
 }
 
-.instagram {
-    background:#E1306C;
-    color:#fff;
-    margin-top:10px;
+/* REVIEWS */
+.reviews {
+  padding:20px;
+  text-align:center;
+}
+
+/* TIMER */
+.timer {
+  text-align:center;
+  color:#ff4444;
+  font-size:20px;
 }
 
 /* FOOTER */
 footer {
-    text-align:center;
-    padding:20px;
-    background:#000;
+  text-align:center;
+  padding:20px;
+  background:black;
 }
 </style>
-
 </head>
 
 <body>
 
-<header>VFrameGalleryy 🚀</header>
+<header>VFrameGalleryy</header>
 
-<section class="hero">
-<h1>Premium Photo Frames</h1>
-<p>Turn Your Memories Into Beautiful Frames ❤️</p>
-
-<div class="badge">🎉 200+ Happy Customers</div>
-<div class="urgent">🔥 Limited Offer – Order Today!</div>
-</section>
-
-<section class="prices">
-
-<div class="card">
-<h2>6 x 4 Frame</h2>
-<p>₹100</p>
+<div class="hero">
+  <h1>Turn Your Memories Into Frames ❤️</h1>
+  <p>200+ Happy Customers | All Over Andhra Pradesh Delivery 🚚</p>
 </div>
 
-<div class="card">
-<h2>8 x 12 Frame</h2>
-<p>₹250</p>
+<div class="timer">
+  Offer Ends In: <span id="countdown"></span>
 </div>
 
-<div class="card">
-<h2>12 x 18 Frame</h2>
-<p>₹350</p>
+<!-- FRAME SIZES -->
+<div class="frames">
+
+  <div class="card">
+    <h3>6 x 4 Frame</h3>
+    <p class="price">₹99</p>
+  </div>
+
+  <div class="card">
+    <h3>8 x 12 Frame</h3>
+    <p class="price">₹249</p>
+  </div>
+
+  <div class="card">
+    <h3>12 x 18 Frame</h3>
+    <p class="price">₹349</p>
+  </div>
+
 </div>
 
-</section>
+<!-- UPLOAD -->
+<div class="upload">
+  <h2>Upload Your Photo</h2>
+  <input type="file" id="upload" accept="image/*">
+  <div class="preview">
+    <img id="previewImg" src="">
+  </div>
+</div>
 
-<section class="features">
-<h2>Why Choose Us?</h2>
-<p>✅ High Quality Frames</p>
-<p>🚚 All Over Andhra Pradesh Delivery</p>
-<p>⚡ Fast Processing (2–4 Days)</p>
-<p>💯 Trusted by 200+ Customers</p>
-</section>
+<!-- WHATSAPP ORDER -->
+<div style="text-align:center;">
+  <a class="btn whatsapp" href="https://wa.me/919494899320?text=Hi%20I%20want%20to%20order%20a%20frame">Order on WhatsApp</a>
 
-<section class="order">
+  <a class="btn instagram" href="https://instagram.com/vframegalleryy">Follow Instagram</a>
+</div>
 
-<h2>Place Your Order</h2>
-
-<input id="name" placeholder="Your Name">
-<input id="phone" placeholder="Phone Number">
-<textarea id="address" placeholder="Delivery Address"></textarea>
-
-<select id="size">
-<option>Select Frame Size</option>
-<option>6x4 - ₹100</option>
-<option>8x12 - ₹250</option>
-<option>12x18 - ₹350</option>
-</select>
-
-<button class="whatsapp" onclick="sendWhatsApp()">Order on WhatsApp</button>
-
-<button class="instagram" onclick="openInstagram()">Follow on Instagram</button>
-
-</section>
+<!-- REVIEWS -->
+<div class="reviews">
+  <h2>⭐ Customer Reviews</h2>
+  <p>“Amazing quality frames!”</p>
+  <p>“Fast delivery and best price!”</p>
+</div>
 
 <footer>
-© 2026 VFrameGalleryy | Made with ❤️
+  © 2026 VFrameGalleryy
 </footer>
 
 <script>
+// IMAGE PREVIEW
+document.getElementById("upload").addEventListener("change", function(e){
+  const file = e.target.files[0];
+  const reader = new FileReader();
+  reader.onload = function(){
+    document.getElementById("previewImg").src = reader.result;
+  }
+  reader.readAsDataURL(file);
+});
 
-function sendWhatsApp() {
-    let name = document.getElementById("name").value;
-    let phone = document.getElementById("phone").value;
-    let address = document.getElementById("address").value;
-    let size = document.getElementById("size").value;
+// COUNTDOWN TIMER
+let endDate = new Date();
+endDate.setHours(endDate.getHours()+5);
 
-    let msg = `🔥 VFrameGalleryy Order 🔥%0A
-Name: ${name}%0A
-Phone: ${phone}%0A
-Address: ${address}%0A
-Frame: ${size}%0A
-%0AI will send my photo in WhatsApp.`;
+setInterval(function(){
+  let now = new Date();
+  let diff = endDate - now;
 
-    let url = `https://wa.me/919494899320?text=${msg}`;
-    window.open(url, '_blank');
-}
+  let h = Math.floor(diff/1000/60/60);
+  let m = Math.floor(diff/1000/60)%60;
+  let s = Math.floor(diff/1000)%60;
 
-function openInstagram(){
-    window.open("https://instagram.com/vframegalleryy", "_blank");
-}
-
+  document.getElementById("countdown").innerHTML =
+    h + "h " + m + "m " + s + "s";
+},1000);
 </script>
 
 </body>
