@@ -3,257 +3,190 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VFrameGalleryy</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<title>VFrameGalleryy Pro</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#0f0f0f;color:#fff;}
-
-/* HERO */
-.hero{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-.hero h1{
-  font-size:40px;
-  background:linear-gradient(90deg,#ffcc00,#ff6600);
-  -webkit-background-clip:text;
-  color:transparent;
+body {
+    margin:0;
+    font-family:Poppins;
+    background:#0f0f0f;
+    color:#fff;
 }
 
-/* BUTTON */
-.btn{
-  margin-top:15px;
-  padding:12px 25px;
-  border:none;
-  border-radius:30px;
-  background:linear-gradient(90deg,#ffcc00,#ff6600);
-  color:#000;
-  cursor:pointer;
-  font-weight:bold;
+header {
+    background:linear-gradient(90deg,#ff512f,#dd2476);
+    padding:15px;
+    text-align:center;
+    font-size:22px;
 }
 
-/* SECTION */
-.section{padding:50px 20px;text-align:center;}
+section { padding:20px; }
 
-/* CARD */
-.cards{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;}
-.card{
-  background:#1c1c1c;
-  padding:20px;
-  border-radius:15px;
-  width:250px;
+.card {
+    background:#1c1c1c;
+    padding:20px;
+    border-radius:12px;
+    margin:10px 0;
 }
 
-/* FORM */
-.form{
-  max-width:400px;
-  margin:auto;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
+input, select, textarea {
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:none;
+    border-radius:8px;
 }
 
-input,select{
-  padding:10px;
-  border-radius:8px;
-  border:none;
+button {
+    padding:12px;
+    width:100%;
+    border:none;
+    border-radius:10px;
+    background:#25D366;
+    color:#fff;
+    font-size:16px;
 }
 
-/* GALLERY */
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:10px;
+.preview img {
+    max-width:100%;
+    margin-top:10px;
+    border-radius:10px;
 }
 
-.gallery img{
-  width:100%;
-  border-radius:10px;
+.admin {
+    background:#111;
 }
 
-/* INSTAGRAM CARD */
-.insta-card{
-  background:#1c1c1c;
-  padding:20px;
-  border-radius:15px;
-  max-width:300px;
-  margin:auto;
-}
-
-/* WHATSAPP */
-.whatsapp{
-  position:fixed;
-  bottom:80px;
-  right:20px;
-  background:#25D366;
-  padding:15px;
-  border-radius:50%;
-  color:#fff;
-  text-decoration:none;
-}
-
-/* STICKY */
-.sticky{
-  position:fixed;
-  bottom:0;
-  width:100%;
-  background:#ffcc00;
-  color:#000;
-  text-align:center;
-  padding:10px;
+.order-box {
+    background:#222;
+    padding:10px;
+    margin:10px 0;
+    border-radius:8px;
 }
 </style>
+
 </head>
 
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>Frame Your Memories ❤️</h1>
-  <p>Premium Frames | Fast Delivery</p>
-  <button class="btn" onclick="scrollToOrder()">Order Now</button>
+<header>VFrameGalleryy 🚀 Version 6</header>
+
+<section>
+
+<h2>Place Order</h2>
+
+<input id="name" placeholder="Name">
+<input id="phone" placeholder="Phone">
+<textarea id="address" placeholder="Address"></textarea>
+
+<select id="size">
+<option>Choose Size</option>
+<option>6x4 - ₹100</option>
+<option>8x12 - ₹250</option>
+<option>12x18 - ₹350</option>
+</select>
+
+<label>Upload Photo 📎</label>
+<input type="file" id="photo">
+
+<div class="preview">
+<img id="photoPreview">
+</div>
+
+<label>Payment Screenshot 💳</label>
+<input type="file" id="payment">
+
+<div class="preview">
+<img id="paymentPreview">
+</div>
+
+<button onclick="submitOrder()">Submit Order</button>
+
 </section>
 
-<!-- FRAMES -->
-<section class="section">
-  <h2>Our Frames</h2>
-  <div class="cards">
-    <div class="card">6x4 Frame - ₹99</div>
-    <div class="card">8x12 Frame - ₹249</div>
-    <div class="card">12x18 Frame - ₹349</div>
-  </div>
+<section class="admin">
+
+<h2>Admin Panel 📊</h2>
+
+<button onclick="loadOrders()">Load Orders</button>
+<button onclick="downloadOrders()">Download Orders</button>
+
+<div id="orders"></div>
+
 </section>
-
-<!-- ORDER FORM -->
-<section class="section" id="order">
-  <h2>Place Your Order</h2>
-
-  <div class="form">
-    <input type="text" id="name" placeholder="Your Name">
-    <input type="tel" id="phone" placeholder="Phone Number">
-    <input type="text" id="address" placeholder="Delivery Address">
-
-    <select id="size" onchange="updatePrice()">
-      <option value="">Select Frame Size</option>
-      <option value="6x4">6x4 - ₹99</option>
-      <option value="8x12">8x12 - ₹249</option>
-      <option value="12x18">12x18 - ₹349</option>
-    </select>
-
-    <h3 id="price">Price: ₹0</h3>
-
-    <button class="btn" onclick="payUPI()">Pay via UPI</button>
-    <button class="btn" onclick="sendWhatsApp()">Confirm Order</button>
-  </div>
-</section>
-
-<!-- INSTAGRAM PROFILE -->
-<section class="section">
-  <h2>Follow Us on Instagram 📸</h2>
-
-  <div class="insta-card">
-    <h3>@vframegalleryy</h3>
-    <p>Custom Photo Frames ❤️</p>
-
-    <a href="https://instagram.com/vframegalleryy" target="_blank">
-      <button class="btn">Follow Now</button>
-    </a>
-  </div>
-</section>
-
-<!-- INSTAGRAM REELS -->
-<section class="section">
-  <h2>Our Reels 🔥</h2>
-
-  <blockquote class="instagram-media"
-    data-instgrm-permalink="https://www.instagram.com/reel/https://www.instagram.com/reel/DXRHbQdEmdA/?igsh=eG1jbjdoeWI4ZjQy/"
-    style="width:100%; max-width:400px; margin:auto;">
-  </blockquote>
-
-  <script async src="//www.instagram.com/embed.js"></script>
-</section>
-
-<!-- GALLERY -->
-<section class="section">
-  <h2>Gallery</h2>
-  <div class="gallery">
-    <img src="https://via.placeholder.com/300">
-    <img src="https://via.placeholder.com/300">
-  </div>
-</section>
-
-<!-- TRUST -->
-<section class="section">
-  <h2>Why Choose Us</h2>
-  <div class="cards">
-    <div class="card">🚚 All Over Andhra Pradesh Delivery</div>
-    <div class="card">⭐ 100+ Happy Customers</div>
-    <div class="card">📦 Safe Packaging</div>
-  </div>
-</section>
-
-<!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/91XXXXXXXXXX">💬</a>
-
-<!-- STICKY -->
-<div class="sticky">Order Now 🔥</div>
 
 <script>
 
-let basePrice = 0;
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
-function scrollToOrder(){
-  document.getElementById("order").scrollIntoView({behavior:"smooth"});
+document.getElementById("photo").onchange = e => {
+    let file = e.target.files[0];
+    document.getElementById("photoPreview").src = URL.createObjectURL(file);
+};
+
+document.getElementById("payment").onchange = e => {
+    let file = e.target.files[0];
+    document.getElementById("paymentPreview").src = URL.createObjectURL(file);
+};
+
+function submitOrder() {
+    let order = {
+        name: name.value,
+        phone: phone.value,
+        address: address.value,
+        size: size.value,
+        date: new Date().toLocaleString()
+    };
+
+    orders.push(order);
+    localStorage.setItem("orders", JSON.stringify(orders));
+
+    sendWhatsApp(order);
+
+    alert("Order Saved ✅");
 }
 
-function updatePrice(){
-  let size = document.getElementById("size").value;
+function sendWhatsApp(order) {
+    let msg = `🔥 VFrameGalleryy Order 🔥%0A
+Name: ${order.name}%0A
+Phone: ${order.phone}%0A
+Address: ${order.address}%0A
+Size: ${order.size}`;
 
-  if(size==="6x4") basePrice = 99;
-  if(size==="8x12") basePrice = 249;
-  if(size==="12x18") basePrice = 349;
+    let num = "9494899320"; // change number
 
-  document.getElementById("price").innerText = "Price: ₹" + basePrice;
+    window.open(`https://wa.me/${num}?text=${msg}`);
 }
 
-function payUPI(){
-  if(basePrice === 0){
-    alert("Please select frame size first!");
-    return;
-  }
-  window.location.href = "upi://pay?pa=9494899320@ybl&pn=VFrameGalleryy&am="+basePrice;
+function loadOrders() {
+    let container = document.getElementById("orders");
+    container.innerHTML = "";
+
+    orders.forEach((o, i) => {
+        container.innerHTML += `
+        <div class="order-box">
+        <b>${o.name}</b><br>
+        ${o.phone}<br>
+        ${o.size}<br>
+        ${o.date}<br>
+        <button onclick="deleteOrder(${i})">Delete</button>
+        </div>`;
+    });
 }
 
-function sendWhatsApp(){
-  let name = document.getElementById("name").value.trim();
-  let phone = document.getElementById("phone").value.trim();
-  let address = document.getElementById("address").value.trim();
-  let size = document.getElementById("size").value;
+function deleteOrder(i) {
+    orders.splice(i,1);
+    localStorage.setItem("orders", JSON.stringify(orders));
+    loadOrders();
+}
 
-  if(!name || !phone || !address || !size){
-    alert("Please fill all details!");
-    return;
-  }
-
-  let message = `Order Details:
-Name: ${name}
-Phone: ${phone}
-Address: ${address}
-Frame Size: ${size}
-Price: ₹${basePrice}`;
-
-  let url = "https://wa.me/9494899320?text=" + encodeURIComponent(message);
-
-  window.open(url, "_blank");
-
-  alert("Order sent successfully! We will contact you soon.");
+function downloadOrders() {
+    let data = JSON.stringify(orders, null, 2);
+    let blob = new Blob([data], {type:"application/json"});
+    let a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "orders.json";
+    a.click();
 }
 
 </script>
