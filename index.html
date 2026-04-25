@@ -13,6 +13,7 @@ body {
     color:#fff;
 }
 
+/* HEADER */
 header {
     background:linear-gradient(90deg,#ff512f,#dd2476);
     padding:15px;
@@ -21,6 +22,7 @@ header {
     font-weight:bold;
 }
 
+/* HERO */
 .hero {
     text-align:center;
     padding:30px;
@@ -28,12 +30,18 @@ header {
 
 .badge {
     background:#25D366;
-    display:inline-block;
     padding:8px 15px;
     border-radius:20px;
+    display:inline-block;
     margin-top:10px;
 }
 
+.urgent {
+    color:#ffcc00;
+    margin-top:10px;
+}
+
+/* PRICE */
 .prices {
     display:flex;
     flex-wrap:wrap;
@@ -54,6 +62,17 @@ header {
     transform:scale(1.05);
 }
 
+/* FEATURES */
+.features {
+    padding:20px;
+    text-align:center;
+}
+
+.features p {
+    margin:8px 0;
+}
+
+/* ORDER */
 .order {
     padding:20px;
     background:#1a1a1a;
@@ -87,12 +106,7 @@ button {
     margin-top:10px;
 }
 
-.preview img {
-    max-width:100%;
-    border-radius:10px;
-    margin-top:10px;
-}
-
+/* FOOTER */
 footer {
     text-align:center;
     padding:20px;
@@ -108,8 +122,10 @@ footer {
 
 <section class="hero">
 <h1>Premium Photo Frames</h1>
-<p>Make Your Memories Beautiful ❤️</p>
+<p>Turn Your Memories Into Beautiful Frames ❤️</p>
+
 <div class="badge">🎉 200+ Happy Customers</div>
+<div class="urgent">🔥 Limited Offer – Order Today!</div>
 </section>
 
 <section class="prices">
@@ -131,13 +147,21 @@ footer {
 
 </section>
 
+<section class="features">
+<h2>Why Choose Us?</h2>
+<p>✅ High Quality Frames</p>
+<p>🚚 All Over Andhra Pradesh Delivery</p>
+<p>⚡ Fast Processing (2–4 Days)</p>
+<p>💯 Trusted by 200+ Customers</p>
+</section>
+
 <section class="order">
 
 <h2>Place Your Order</h2>
 
 <input id="name" placeholder="Your Name">
 <input id="phone" placeholder="Phone Number">
-<textarea id="address" placeholder="Address"></textarea>
+<textarea id="address" placeholder="Delivery Address"></textarea>
 
 <select id="size">
 <option>Select Frame Size</option>
@@ -146,13 +170,6 @@ footer {
 <option>12x18 - ₹350</option>
 </select>
 
-<label>Upload Photo 📎</label>
-<input type="file" id="photo">
-
-<div class="preview">
-<img id="previewImg">
-</div>
-
 <button class="whatsapp" onclick="sendWhatsApp()">Order on WhatsApp</button>
 
 <button class="instagram" onclick="openInstagram()">Follow on Instagram</button>
@@ -160,36 +177,28 @@ footer {
 </section>
 
 <footer>
-© 2026 VFrameGalleryy | All Andhra Pradesh Delivery 🚚
+© 2026 VFrameGalleryy | Made with ❤️
 </footer>
 
 <script>
 
-// Image Preview
-document.getElementById("photo").onchange = function(e){
-    let file = e.target.files[0];
-    document.getElementById("previewImg").src = URL.createObjectURL(file);
-};
-
-// WhatsApp Order
 function sendWhatsApp() {
     let name = document.getElementById("name").value;
     let phone = document.getElementById("phone").value;
     let address = document.getElementById("address").value;
     let size = document.getElementById("size").value;
 
-    let msg = `🔥 New Order - VFrameGalleryy 🔥%0A
+    let msg = `🔥 VFrameGalleryy Order 🔥%0A
 Name: ${name}%0A
 Phone: ${phone}%0A
 Address: ${address}%0A
-Frame: ${size}`;
+Frame: ${size}%0A
+%0AI will send my photo in WhatsApp.`;
 
     let url = `https://wa.me/919494899320?text=${msg}`;
-
     window.open(url, '_blank');
 }
 
-// Instagram
 function openInstagram(){
     window.open("https://instagram.com/vframegalleryy", "_blank");
 }
