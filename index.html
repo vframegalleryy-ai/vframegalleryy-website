@@ -5,198 +5,230 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VFrameGalleryy</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #f4f6f9;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
 }
 
-/* Header */
-header {
-  background: #000;
-  color: #fff;
-  padding: 15px;
-  text-align: center;
-  position: sticky;
-  top: 0;
+body{
+  background:#0f0f0f;
+  color:#fff;
 }
 
-/* Hero */
-.hero {
-  height: 90vh;
-  background: linear-gradient(to right,#ff416c,#ff4b2b);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:linear-gradient(135deg,#000,#1a1a1a);
 }
 
-.btn {
-  background: white;
-  color: #ff416c;
-  padding: 12px 25px;
-  border-radius: 25px;
-  text-decoration: none;
-  margin-top: 15px;
+.hero h1{
+  font-size:40px;
+  margin-bottom:10px;
 }
 
-/* Section */
-.section {
-  padding: 50px 20px;
-  text-align: center;
+.hero p{
+  opacity:0.7;
 }
 
-/* Price Cards */
-.prices {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.btn{
+  margin-top:20px;
+  padding:12px 25px;
+  background:#ffcc00;
+  color:#000;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.3s;
 }
 
-.card {
-  background: #fff;
-  margin: 15px;
-  padding: 20px;
-  width: 230px;
-  border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+.btn:hover{
+  transform:scale(1.1);
 }
 
-.price {
-  color: red;
-  font-size: 22px;
-  font-weight: bold;
+/* SECTION */
+.section{
+  padding:60px 20px;
+  text-align:center;
 }
 
-/* Reviews */
-.reviews {
-  display: flex;
-  overflow-x: auto;
+/* CARDS */
+.cards{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
 }
 
-.review {
-  min-width: 250px;
-  background: white;
-  margin: 10px;
-  padding: 15px;
-  border-radius: 10px;
+.card{
+  background:#1c1c1c;
+  padding:20px;
+  border-radius:15px;
+  width:250px;
+  transition:0.3s;
 }
 
-/* Steps */
-.process {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.card:hover{
+  transform:translateY(-10px);
 }
 
-.step {
-  width: 200px;
-  margin: 15px;
+.card img{
+  width:100%;
+  border-radius:10px;
 }
 
-/* Payment */
-.payment {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
+.price{
+  color:#ffcc00;
+  font-size:22px;
+  margin:10px 0;
 }
 
-/* Buttons */
-.whatsapp {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25D366;
-  padding: 15px;
-  border-radius: 50%;
-  color: white;
+/* GALLERY */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:10px;
 }
 
-.instagram {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  background: #E1306C;
-  padding: 15px;
-  border-radius: 50%;
-  color: white;
+.gallery img{
+  width:100%;
+  border-radius:10px;
+  transition:0.3s;
 }
 
-.order-btn {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: red;
-  color: white;
-  text-align: center;
-  padding: 15px;
-  text-decoration: none;
+.gallery img:hover{
+  transform:scale(1.1);
 }
+
+/* TRUST */
+.trust{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.trust div{
+  background:#1c1c1c;
+  padding:15px;
+  border-radius:10px;
+}
+
+/* WHATSAPP BUTTON */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:#fff;
+  padding:15px;
+  border-radius:50%;
+  font-size:20px;
+  text-decoration:none;
+}
+
+/* STICKY CTA */
+.sticky{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#ffcc00;
+  color:#000;
+  text-align:center;
+  padding:10px;
+  font-weight:bold;
+}
+
 </style>
 </head>
 
 <body>
 
-<header>
-  <h2>VFrameGalleryy</h2>
-</header>
-
+<!-- HERO -->
 <section class="hero">
-  <h1>Turn Your Memories Into Beautiful Frames ❤️</h1>
-  <p>Best Quality | Best Price | Andhra Pradesh Delivery 🚚</p>
-  <a href="https://wa.me/919494899320" class="btn">Order Now</a>
+  <h1>Turn Your Memories Into Frames ❤️</h1>
+  <p>Premium Photo Frames at Best Price</p>
+  <button class="btn" onclick="scrollToSection()">View Frames</button>
 </section>
 
-<section class="section">
-  <h2>Frame Prices</h2>
-  <div class="prices">
-    <div class="card"><h3>6x4</h3><p class="price">₹100/-</p></div>
-    <div class="card"><h3>8x12</h3><p class="price">₹250/-</p></div>
-    <div class="card"><h3>12x18</h3><p class="price">₹350/-</p></div>
+<!-- PRICING -->
+<section class="section" id="frames">
+  <h2>Our Frames</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200">
+      <h3>6x4 Frame</h3>
+      <p class="price">₹99</p>
+      <button class="btn" onclick="order()">Order Now</button>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200">
+      <h3>8x12 Frame</h3>
+      <p class="price">₹249</p>
+      <button class="btn" onclick="order()">Order Now</button>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200">
+      <h3>12x18 Frame</h3>
+      <p class="price">₹349</p>
+      <button class="btn" onclick="order()">Order Now</button>
+    </div>
+
   </div>
 </section>
 
+<!-- GALLERY -->
 <section class="section">
-  <h2>What Customers Say ⭐</h2>
-  <div class="reviews">
-    <div class="review">"Super quality frames! Loved it ❤️"</div>
-    <div class="review">"Fast delivery and best price 🔥"</div>
-    <div class="review">"Highly recommended!"</div>
+  <h2>Gallery</h2>
+  <div class="gallery">
+    <img src="https://via.placeholder.com/300">
+    <img src="https://via.placeholder.com/300">
+    <img src="https://via.placeholder.com/300">
+    <img src="https://via.placeholder.com/300">
   </div>
 </section>
 
+<!-- TRUST -->
 <section class="section">
-  <h2>How to Order</h2>
-  <div class="process">
-    <div class="step">📤 Send your photo</div>
-    <div class="step">🖨️ We print & frame</div>
-    <div class="step">🚚 Delivery to your home</div>
+  <h2>Why Choose Us</h2>
+  <div class="trust">
+    <div>🚚 All Over Andhra Pradesh Delivery</div>
+    <div>⭐ 100+ Happy Customers</div>
+    <div>📦 Safe Packaging</div>
   </div>
 </section>
 
-<section class="section payment">
-  <h2>Easy Payment 💳</h2>
-  <p>Pay via UPI / PhonePe / Google Pay</p>
-  <p><b>UPI ID: 9494899320@ybl</b></p>
-</section>
+<!-- WHATSAPP -->
+<a class="whatsapp" href="https://wa.me/9494899320">💬</a>
 
-<section class="section">
-  <h2>Ready to Order?</h2>
-  <a href="https://wa.me/919494899320" class="btn">Chat on WhatsApp</a>
-</section>
+<!-- STICKY -->
+<div class="sticky">
+  Order Now on WhatsApp 🔥
+</div>
 
-<footer style="background:#000;color:#fff;text-align:center;padding:15px;">
-  © VFrameGalleryy
-</footer>
+<script>
+function scrollToSection(){
+  document.getElementById("frames").scrollIntoView({behavior:"smooth"});
+}
 
-<a href="https://wa.me/919494899320" class="whatsapp">💬</a>
-<a href="https://instagram.com/vframegalleryy" class="instagram">📸</a>
-<a href="https://wa.me/919494899320" class="order-btn">Order Now</a>
+function order(){
+  window.open("https://wa.me/91XXXXXXXXXX?text=I want to order a frame");
+}
+</script>
 
 </body>
 </html>
