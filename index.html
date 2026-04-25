@@ -8,11 +8,10 @@
 <style>
 body {
   margin:0;
-  font-family: 'Poppins', sans-serif;
+  font-family:'Poppins', sans-serif;
   background:#0f0f0f;
   color:white;
 }
-
 header {
   text-align:center;
   padding:20px;
@@ -20,33 +19,24 @@ header {
   font-size:24px;
   font-weight:bold;
 }
-
 .hero {
   text-align:center;
-  padding:30px;
+  padding:20px;
 }
-
 .frames {
   display:flex;
-  gap:20px;
   justify-content:center;
+  gap:20px;
   flex-wrap:wrap;
   padding:20px;
 }
-
 .card {
   background:#1a1a1a;
   padding:15px;
-  border-radius:15px;
-  width:200px;
-  text-align:center;
+  border-radius:12px;
 }
+.price { color:#00ffcc; }
 
-.price {
-  color:#00ffcc;
-}
-
-/* FORM */
 .form-box {
   max-width:400px;
   margin:auto;
@@ -57,31 +47,31 @@ input, select, textarea {
   width:100%;
   padding:12px;
   margin:10px 0;
+  border-radius:10px;
   border:none;
+}
+
+.total-box {
+  background:#1a1a1a;
+  padding:15px;
   border-radius:10px;
 }
 
-/* BUTTON */
 .btn {
   display:block;
   text-align:center;
   padding:15px;
   border-radius:10px;
-  text-decoration:none;
-  font-weight:bold;
   background:#25D366;
   color:black;
+  font-weight:bold;
   margin-top:10px;
 }
 
-.instagram {
-  background:#E1306C;
-  color:white;
-}
-
-.timer {
+.note {
   text-align:center;
-  color:#ff4444;
+  color:#00ffcc;
+  font-size:14px;
 }
 
 footer {
@@ -97,90 +87,74 @@ footer {
 <header>VFrameGalleryy</header>
 
 <div class="hero">
-  <h1>Turn Your Memories Into Frames ❤️</h1>
-  <p>200+ Happy Customers | All Over Andhra Pradesh Delivery 🚚</p>
-</div>
-
-<div class="timer">
-  Offer Ends In: <span id="countdown"></span>
+  <h2>🚚 Delivery Available Only in Andhra Pradesh</h2>
 </div>
 
 <!-- FRAMES -->
 <div class="frames">
-  <div class="card">
-    <h3>6 x 4</h3>
-    <p class="price">₹99</p>
-  </div>
-  <div class="card">
-    <h3>8 x 12</h3>
-    <p class="price">₹249</p>
-  </div>
-  <div class="card">
-    <h3>12 x 18</h3>
-    <p class="price">₹349</p>
-  </div>
+  <div class="card"><h3>6x4</h3><p class="price">₹99</p></div>
+  <div class="card"><h3>8x12</h3><p class="price">₹249</p></div>
+  <div class="card"><h3>12x18</h3><p class="price">₹349</p></div>
 </div>
 
-<!-- ORDER FORM -->
+<!-- FORM -->
 <div class="form-box">
-  <h2>Enter Your Details</h2>
+  <h2>Order Details</h2>
 
   <input type="text" id="name" placeholder="Full Name">
   <input type="tel" id="phone" placeholder="Mobile Number">
 
-  <select id="size">
-    <option>Select Frame Size</option>
-    <option>6 x 4 - ₹99</option>
-    <option>8 x 12 - ₹249</option>
-    <option>12 x 18 - ₹349</option>
+  <select id="size" onchange="calculateTotal()">
+    <option value="">Select Frame Size</option>
+    <option value="99">6x4 - ₹99</option>
+    <option value="249">8x12 - ₹249</option>
+    <option value="349">12x18 - ₹349</option>
   </select>
 
-  <textarea id="address" placeholder="Delivery Address"></textarea>
-  <textarea id="note" placeholder="Any special request"></textarea>
+  <textarea id="address" placeholder="Full Address (Andhra Pradesh Only)"></textarea>
+
+  <!-- TOTAL -->
+  <div class="total-box">
+    <p>Frame Price: ₹<span id="framePrice">0</span></p>
+    <p>Delivery Charge (AP): ₹60</p>
+    <h3>Total: ₹<span id="total">0</span></h3>
+  </div>
+
+  <p class="note">💰 Pay after confirmation on WhatsApp</p>
 
   <a class="btn" onclick="sendWhatsApp()">Order on WhatsApp</a>
-
-  <a class="btn instagram" href="https://instagram.com/vframegalleryy">Follow Instagram</a>
 </div>
 
-<footer>
-  © 2026 VFrameGalleryy
-</footer>
+<footer>© 2026 VFrameGalleryy</footer>
 
 <script>
-// WHATSAPP AUTO MESSAGE
+function calculateTotal(){
+  let frame = document.getElementById("size").value || 0;
+  let delivery = 50;
+
+  let total = parseInt(frame) + delivery;
+
+  document.getElementById("framePrice").innerText = frame;
+  document.getElementById("total").innerText = total;
+}
+
 function sendWhatsApp(){
   let name = document.getElementById("name").value;
   let phone = document.getElementById("phone").value;
-  let size = document.getElementById("size").value;
+  let size = document.getElementById("size").options[document.getElementById("size").selectedIndex].text;
   let address = document.getElementById("address").value;
-  let note = document.getElementById("note").value;
+  let total = document.getElementById("total").innerText;
 
-  let message = `*New Order - VFrameGalleryy*%0A
+  let msg = `*New Order - VFrameGalleryy*%0A
 Name: ${name}%0A
 Phone: ${phone}%0A
-Frame Size: ${size}%0A
+Frame: ${size}%0A
+Delivery: Andhra Pradesh Only (₹50)%0A
 Address: ${address}%0A
-Note: ${note}`;
+Total Amount: ₹${total}`;
 
-  window.open(`https://wa.me/919494899320?text=${message}`, '_blank');
+  window.open(`https://wa.me/919494899320?text=${msg}`, '_blank');
 }
-
-// TIMER
-let endDate = new Date();
-endDate.setHours(endDate.getHours()+5);
-
-setInterval(function(){
-  let now = new Date();
-  let diff = endDate - now;
-
-  let h = Math.floor(diff/1000/60/60);
-  let m = Math.floor(diff/1000/60)%60;
-  let s = Math.floor(diff/1000)%60;
-
-  document.getElementById("countdown").innerHTML =
-    h + "h " + m + "m " + s + "s";
-},1000);
 </script>
 
 </body>
