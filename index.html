@@ -8,153 +8,113 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
-body{
-    background:#f5f5f5;
-    color:#222;
-}
+body{background:#f8f9fb;color:#222;}
 
-/* NAVBAR */
+/* NAV */
 nav{
-    display:flex;
-    justify-content:space-between;
-    padding:15px 40px;
-    background:white;
-    position:sticky;
-    top:0;
-    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+display:flex;
+justify-content:space-between;
+padding:15px 40px;
+background:white;
+position:sticky;
+top:0;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
+z-index:1000;
 }
 
-.logo{
-    font-weight:600;
-    color:#111;
-}
-
-nav a{
-    margin-left:20px;
-    text-decoration:none;
-    color:#333;
-    font-size:14px;
-}
+nav a{margin-left:20px;text-decoration:none;color:#333;font-size:14px;}
 
 /* HERO */
 .hero{
-    height:80vh;
-    background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:white;
+height:85vh;
+background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
 }
 
-.hero-content{
-    background:rgba(0,0,0,0.5);
-    padding:30px;
-    border-radius:10px;
-}
-
-.hero h1{
-    font-size:42px;
-}
-
-.hero p{
-    margin-top:10px;
-}
+.hero h1{font-size:45px;}
+.hero p{margin-top:10px;}
 
 .btn{
-    margin-top:20px;
-    display:inline-block;
-    padding:12px 25px;
-    border-radius:25px;
-    text-decoration:none;
-    font-size:14px;
+margin-top:20px;
+display:inline-block;
+padding:12px 25px;
+border-radius:25px;
+text-decoration:none;
+font-size:14px;
 }
 
-.primary{
-    background:#000;
-    color:white;
-}
-
-.secondary{
-    background:#E1306C;
-    color:white;
-}
+.primary{background:#000;color:white;}
+.insta{background:#E1306C;color:white;}
 
 /* SECTION */
-.section{
-    padding:60px 40px;
-    text-align:center;
-}
-
-.section h2{
-    margin-bottom:20px;
-}
-
-/* GALLERY */
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:15px;
-}
-
-.gallery img{
-    width:100%;
-    border-radius:10px;
-}
+.section{padding:60px 40px;text-align:center;}
+.section h2{margin-bottom:20px;}
 
 /* PRICING */
-.pricing{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
+.pricing{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
 .card{
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    width:200px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+background:white;
+padding:20px;
+border-radius:12px;
+width:200px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
 
-.card h3{
-    margin-bottom:10px;
+/* FORM */
+.form-box{
+max-width:400px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
 
-/* CONTACT */
-.contact a{
-    display:inline-block;
-    margin:10px;
-    padding:10px 20px;
-    border-radius:20px;
-    text-decoration:none;
+input, select{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:1px solid #ddd;
+border-radius:8px;
 }
 
-.whatsapp{
-    background:#25D366;
-    color:white;
+.submit{
+background:#25D366;
+color:white;
+border:none;
+cursor:pointer;
 }
 
-.instagram{
-    background:#E1306C;
-    color:white;
+/* REVIEWS */
+.reviews{
+max-width:500px;
+margin:auto;
 }
+
+.review{
+display:none;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.review.active{display:block;}
 
 /* FOOTER */
 footer{
-    background:#111;
-    color:#aaa;
-    text-align:center;
-    padding:20px;
-    font-size:13px;
+background:#111;
+color:#aaa;
+text-align:center;
+padding:20px;
+font-size:13px;
 }
 
 </style>
@@ -164,72 +124,99 @@ footer{
 
 <!-- NAV -->
 <nav>
-    <div class="logo">VFrameGalleryy</div>
-    <div>
-        <a href="#">Home</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#price">Prices</a>
-        <a href="#contact">Contact</a>
-    </div>
+<div><b>VFrameGalleryy</b></div>
+<div>
+<a href="#">Home</a>
+<a href="#price">Prices</a>
+<a href="#order">Order</a>
+<a href="#contact">Contact</a>
+</div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-    <div class="hero-content">
-        <h1>Capture Moments Beautifully</h1>
-        <p>Premium Frames at Affordable Prices</p>
-        <a href="https://wa.me/919494899320" class="btn primary">Order Now</a>
-        <a href="https://instagram.com/vframegalleryy" class="btn secondary">Instagram</a>
-    </div>
+<div>
+<h1>Frame Your Memories</h1>
+<p>Premium Quality • Affordable Price</p>
+<a href="#order" class="btn primary">Order Now</a>
+<a href="https://instagram.com/vframegalleryy" class="btn insta">Instagram</a>
 </div>
-
-<!-- GALLERY -->
-<div class="section" id="gallery">
-    <h2>Our Frames</h2>
-    <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1582582429416-3c7a5a8a7f77">
-        <img src="https://images.unsplash.com/photo-1598300053653-d8a5dbb4e5c1">
-        <img src="https://images.unsplash.com/photo-1604014237800-1c9102c219da">
-        <img src="https://images.unsplash.com/photo-1616628182509-4c7c7a3a8680">
-    </div>
 </div>
 
 <!-- PRICING -->
 <div class="section" id="price">
-    <h2>Pricing</h2>
-    <div class="pricing">
-        <div class="card">
-            <h3>6 × 4</h3>
-            <p>₹99/-</p>
-        </div>
-        <div class="card">
-            <h3>8 × 12</h3>
-            <p>₹249/-</p>
-        </div>
-        <div class="card">
-            <h3>12 × 18</h3>
-            <p>₹349/-</p>
-        </div>
-    </div>
+<h2>Pricing</h2>
+<div class="pricing">
+<div class="card"><h3>6 × 4</h3><p>₹99/-</p></div>
+<div class="card"><h3>8 × 12</h3><p>₹249/-</p></div>
+<div class="card"><h3>12 × 18</h3><p>₹349/-</p></div>
+</div>
 </div>
 
-<!-- ABOUT -->
+<!-- ORDER FORM -->
+<div class="section" id="order">
+<h2>Place Your Order</h2>
+<div class="form-box">
+<input type="text" id="name" placeholder="Your Name">
+<input type="text" id="phone" placeholder="Phone Number">
+<select id="size">
+<option>Select Frame Size</option>
+<option>6×4 - ₹99</option>
+<option>8×12 - ₹249</option>
+<option>12×18 - ₹349</option>
+</select>
+<input type="text" id="address" placeholder="Delivery Address">
+<button class="submit" onclick="sendWhatsApp()">Order via WhatsApp</button>
+</div>
+</div>
+
+<!-- REVIEWS -->
 <div class="section">
-    <h2>About Us</h2>
-    <p>We provide high-quality photo frames with the best pricing. Perfect for memories, gifts, and decor.</p>
+<h2>Customer Reviews</h2>
+<div class="reviews">
+<div class="review active">"Amazing quality! Totally worth it 🔥"</div>
+<div class="review">"Fast delivery and perfect frames 😍"</div>
+<div class="review">"Best price in market!"</div>
+</div>
 </div>
 
 <!-- CONTACT -->
-<div class="section contact" id="contact">
-    <h2>Contact Us</h2>
-    <a href="https://wa.me/919494899320" class="whatsapp">WhatsApp</a>
-    <a href="https://instagram.com/vframegalleryy" class="instagram">Instagram</a>
+<div class="section" id="contact">
+<h2>Contact</h2>
+<a href="https://wa.me/919494899320" class="btn primary">WhatsApp</a>
+<a href="https://instagram.com/vframegalleryy" class="btn insta">Instagram</a>
 </div>
 
 <!-- FOOTER -->
 <footer>
-    © 2026 VFrameGalleryy • Best Price Best Quality
+© 2026 VFrameGalleryy • Designed for Growth 🚀
 </footer>
+
+<script>
+
+/* WhatsApp Integration */
+function sendWhatsApp(){
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+let size = document.getElementById("size").value;
+let address = document.getElementById("address").value;
+
+let msg = `Order Details:%0AName: ${name}%0APhone: ${phone}%0ASize: ${size}%0AAddress: ${address}`;
+
+window.open(`https://wa.me/919494899320?text=${msg}`);
+}
+
+/* Review Slider */
+let index = 0;
+let reviews = document.querySelectorAll(".review");
+
+setInterval(()=>{
+reviews[index].classList.remove("active");
+index = (index + 1) % reviews.length;
+reviews[index].classList.add("active");
+},3000);
+
+</script>
 
 </body>
 </html>
